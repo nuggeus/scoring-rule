@@ -1,0 +1,109 @@
+---
+title: "Scoring Rule"
+author: "Melody Jiang"
+date: "12/4/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+set.seed(42) # set random seed
+```
+
+```{r}
+# Libraries-----
+library(tidyverse)
+library(caret)
+```
+
+```{r}
+# Specifications of simulated data-----
+n <-  80 # number of observations
+p <- 100 # number of species
+prob_vec <- rep(x = 1/p, times = p)
+```
+
+```{r}
+# Generate data-----------
+samples <- rmultinom(n = 1, size = n, prob = prob_vec)
+samples <- as.vector(samples)
+```
+
+```{r}
+# Inspect data-----
+plot(x = 1:100, y = samples)
+num_zeros = sum(samples == 0) # number of zeros
+percentage_zeros = num_zeros/n # percentage of zeros
+```
+
+```{r}
+# # Create a grid of parameters for the dirihlet prior-----
+# 
+# # Create a list of vectors to expand a grid on
+# possible_params <- c(1, 0.1, 0.001, 0.00001)
+# list_possible_params <- list()
+# for (i in 1:p) {
+#   list_possible_params[[i]] <- possible_params
+# }
+# 
+# # Get a grid of parameters
+# param_grid <- cross(list_possible_params)
+# # the grid won't work because Error in integer(n) : vector size specified is too large
+```
+
+```{r}
+# Alternative expression of samples
+samples_alt <- vector(mode = "numeric")
+for (i in 1:p) {
+  samples_alt <- c(samples_alt, rep(x = i, times = samples[i]))
+}
+```
+
+```{r}
+# Create cross validation folds-----
+num_folds <- 10
+flds <- createFolds(samples_alt, k = num_folds, list = TRUE, returnTrain = FALSE) # gives indices for each fold
+```
+
+```{r}
+alpha_pri <- rep(0.001, times = p)
+total_vali_score <- 0
+for (i in 1:num_folds) {
+  # recreate category-counts form of samples
+  train_samples_alt <- samples_alt[-flds[[i]]]
+  train_samples <- rep(x = 0, times = p)
+  for (j in 1:length(train_samples_alt)) {
+    train_samples[train_samples_alt[j]] <- train_samples[train_samples_alt[j]] + 1
+  }
+  # TODO: recreate category-counts form of validation samples
+  
+  alpha_post <- alpha_pri + train_samples # parameter of the Dirichlet posteior based on training data
+  prob_predict <- alpha_post / sum(alpha_post)# Mean of the dirichlet posterior
+  
+  vali_score <- meanBrierScore(prob_predict, )
+}
+```
+
+```{r}
+meanBrierScore <- function(prob, samples){
+  # We use the version which the higher the score is, the better
+  # samples should be in alternative form
+  n <- length(samples)
+  return( (1/n) * sum(sapply(samples, BrierScore, prob = prob)) )
+}
+```
+
+```{r}
+BrierScore <- function(prob, i){
+  # We use the version which the higher the score is, the better
+  return(2*prob[i] - sum(prob^2) - 1)
+}
+```
+
+
+
+
+

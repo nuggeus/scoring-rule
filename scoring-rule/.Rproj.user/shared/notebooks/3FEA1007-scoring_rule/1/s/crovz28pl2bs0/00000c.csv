@@ -1,0 +1,11 @@
+"0","# Create a grid of parameters for the dirihlet prior-----"
+"0","# Create a list of vectors to expand a grid on"
+"0","possible_params <- c(1, 0.1, 0.001, 0.00001)"
+"0","list_possible_params <- list()"
+"0","for (i in 1:p) {"
+"0","  list_possible_params[[i]] <- possible_params"
+"0","}"
+"0","# Get a grid of parameters"
+"0","param_grid <- cross(list_possible_params)"
+"2","Error in integer(n) : vector size specified is too large
+"

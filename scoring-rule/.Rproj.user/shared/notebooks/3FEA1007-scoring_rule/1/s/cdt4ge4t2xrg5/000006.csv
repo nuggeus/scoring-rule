@@ -1,0 +1,2 @@
+"0","num_zeros = sum(samples == 0) # number of zeros"
+"0","percentage_zeros = num_zeros/n # percentage of zeros"

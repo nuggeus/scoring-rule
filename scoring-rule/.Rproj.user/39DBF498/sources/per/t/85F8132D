@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1575507188378.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3597822156",
+    "id" : "85F8132D",
+    "lastKnownWriteTime" : 1575518262,
+    "last_content_update" : 1575518262728,
+    "path" : "~/Desktop/Topic Modeling/scoring-rule/scoring_rule.Rmd",
+    "project_path" : "scoring_rule.Rmd",
+    "properties" : {
+        "cursorPosition" : "80,61",
+        "last_setup_crc32" : "BA5F3666bb338d19",
+        "scrollLine" : "70",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,4 @@
+"0","# Specifications of simulated data-----"
+"0","n <-  80 # number of observations"
+"0","p <- 100 # number of species"
+"0","prob_vec <- rep(x = 1/p, times = p)"

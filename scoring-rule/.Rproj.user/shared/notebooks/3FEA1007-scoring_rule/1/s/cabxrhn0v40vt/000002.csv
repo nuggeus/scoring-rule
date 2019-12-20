@@ -1,0 +1,3 @@
+"0","# Create cross validation folds-----"
+"0","num_folds <- 10"
+"0","flds <- createFolds(samples_alt, k = num_folds, list = TRUE, returnTrain = FALSE) # gives indices for each fold"

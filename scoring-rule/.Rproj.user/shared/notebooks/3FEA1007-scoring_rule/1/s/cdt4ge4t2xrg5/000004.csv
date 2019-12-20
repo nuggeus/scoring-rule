@@ -1,0 +1,2 @@
+"0","# Inspect data-----"
+"0","plot(x = 1:100, y = samples)"

@@ -1,0 +1,3 @@
+"0","# Generate data-----------"
+"0","samples <- rmultinom(n = 1, size = n, prob = prob_vec)"
+"0","samples <- as.vector(samples)"

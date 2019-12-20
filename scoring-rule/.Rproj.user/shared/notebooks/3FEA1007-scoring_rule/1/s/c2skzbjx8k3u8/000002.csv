@@ -1,0 +1,4 @@
+"0","BrierScore <- function(prob, i){"
+"0","  # We use the version which the higher the score is, the better"
+"0","  return(2*prob[i] - sum(prob^2) - 1)"
+"0","}"

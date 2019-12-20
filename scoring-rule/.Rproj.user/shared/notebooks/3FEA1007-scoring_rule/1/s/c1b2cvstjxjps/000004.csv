@@ -1,0 +1,5 @@
+"0","# Alternative expression of samples"
+"0","samples_alt <- vector(mode = ""numeric"")"
+"0","for (i in 1:p) {"
+"0","  samples_alt <- c(samples_alt, rep(x = i, times = samples[i]))"
+"0","}"

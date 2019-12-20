@@ -1,0 +1,6 @@
+"0","meanBrierScore <- function(prob, samples){"
+"0","  # We use the version which the higher the score is, the better"
+"0","  # samples should be in alternative form"
+"0","  n <- length(samples)"
+"0","  return( (1/n) * sum(sapply(samples, BrierScore, prob = prob)) )"
+"0","}"
